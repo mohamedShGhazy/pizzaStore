@@ -1,0 +1,23 @@
+<header>
+  <h1>
+    Be happy have apizza <mat-icon>sentiment_very_satisfied</mat-icon> !
+  </h1>
+</header>
+<div class="container">
+  <mat-card  *ngFor="let pizza of allPizaas">
+    <mat-card-header>
+      <mat-card-title>{{pizza.name}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="{{pizza.img}}" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+       {{pizza.comp}}
+      </p>
+      <p class="price"> price <span> {{pizza.price}}</span> $</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button (click)="add(pizza)" mat-button ><mat-icon>add_shopping_cart</mat-icon></button>
+
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,0 +1,100 @@
+<div *ngIf="cartContent == null" style="text-align: center; margin-top: 20px">
+  <mat-label class="head">There are no orders yet !</mat-label>
+</div>
+
+<mat-horizontal-stepper #stepper *ngIf="cartContent != null" color="accent">
+  <mat-step [stepControl]="firstFormGroup">
+    <div class="container">
+      <div class="row" *ngFor="let item of cartContent; let i = index">
+        <div class="img"><img src="{{ item.img }}" alt="imge" /></div>
+        <div class="name">{{ item.name }}</div>
+        <div class="price">{{ item.price }} $</div>
+        <div class="remove">
+          <button mat-icon-button (click)="remove(i)">
+            <mat-icon>remove_shopping_cart</mat-icon>
+          </button>
+        </div>
+      </div>
+      <button mat-button matStepperNext class="btn">Continue</button>
+    </div>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <div class="container">
+      <form class="example-form">
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width" color = 'accent'>
+                <mat-label>First name</mat-label>
+                <input matInput />
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width" color = 'accent'>
+                <mat-label> Last Name </mat-label>
+                <input matInput />
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+
+        <p>
+          <mat-form-field class="example-full-width" color = 'accent'>
+            <mat-label>Address</mat-label>
+            <textarea matInput placeholder="Ex. 100 Main St"></textarea
+            >
+          </mat-form-field>
+          <mat-form-field class="example-full-width" color = 'accent'>
+            <mat-label>Address 2</mat-label>
+            <textarea matInput></textarea>
+          </mat-form-field>
+        </p>
+
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width" color = 'accent'>
+                <mat-label>City</mat-label>
+                <input matInput placeholder="Ex. San Francisco" />
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="example-full-width" color = 'accent'>
+                <mat-label>State</mat-label>
+                <input matInput placeholder="Ex. California" />
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+        <p>
+          <mat-form-field class="example-full-width" color = 'accent'>
+            <mat-label>Telephone</mat-label>
+            <span matPrefix>+1 &nbsp;</span>
+            <input type="tel" matInput placeholder="555-555-1234">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+          <mat-form-field class="example-full-width" color = 'accent'>
+            <mat-label>E maile </mat-label>
+            <input matInput />
+          </mat-form-field>
+        </p>
+      </form>
+      <button mat-button matStepperNext class="btn">Confirm Order</button>
+
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <div class="done">
+      <img src="../../../assets/orderDone.jpg" alt="done">
+      <p>
+        Your order submitted successfully
+      </p>
+      <p>Bon Appetit</p>
+    </div>
+    <div>
+      <button mat-button matStepperPrevious (click)="back()"class="btn">Back</button>
+
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

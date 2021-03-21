@@ -1,0 +1,99 @@
+<div class="container">
+  <mat-tab-group mat-align-tabs=" Pizaa" color ="accent">
+    <!-- Add new pizza -->
+    <mat-tab label="Add new pizza">
+      <mat-card>
+        <mat-card-header>
+
+          <mat-card-title class="head">
+            <mat-icon >add_to_photos</mat-icon> Add New</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="addPizza">
+              <div class="avatar-upload">
+                <div class="avatar-edit">
+                  <input #upload type='file' id="imageUpload" accept=".png, .jpg, .jpeg" (change)="change($event)" name="imageUpload" formControlName="img" required/>
+                  <label for="imageUpload"><mat-icon>add_to_photos</mat-icon></label>
+                </div>
+                <div class="avatar-preview">
+                  <div [ngClass]="{'noBackground': img}" id="imagePreview" style="background-image: url(../../../assets/addPhoto.png);">
+                    <img src="{{img}}" alt="" srcset="" class="img-ad">
+                  </div>
+                </div>
+              </div>
+              <mat-form-field class="example-full-width" color="warn">
+                <input
+                  matInput
+                  placeholder="Add Name"
+                  formControlName="name"
+                  required
+                />
+                <mat-error class="alert " *ngIf="
+                addPizza.controls['name'].hasError('required') &&
+                addPizza.controls['name'].touched &&
+                addPizza.controls['name'].invalid
+              ">
+              name is required</mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width" color="warn">
+                <input
+                  matInput
+                  placeholder=" Add Price"
+                  formControlName="price"
+                  required
+                />
+                <mat-error class="alert" *ngIf="
+                addPizza.controls['price'].hasError('required') &&
+                addPizza.controls['price'].touched &&
+                addPizza.controls['price'].invalid
+              ">
+              price is required</mat-error>
+              </mat-form-field>
+              <mat-form-field class="example-full-width" color="warn">
+                <input
+                  matInput
+                  placeholder=" Add components"
+                  formControlName="component"
+                  required
+                />
+                <button  mat-button  matSuffix mat-icon-button aria-label="add" color="accent" (click) ='addCom()'><mat-icon style="font-size: 20px;">add_box</mat-icon></button>
+                <mat-error class="alert" *ngIf="
+                addPizza.controls['component'].hasError('required') &&
+                addPizza.controls['component'].touched &&
+                addPizza.controls['component'].invalid
+              ">
+              components is required</mat-error>
+            </mat-form-field>
+            <span style="margin-left: 5px;" *ngFor="let item of component">{{item}}</span>
+
+            </form>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="warn" [disabled]="!addPizza.valid" (click)="onSubmit()">Add</button>
+          <button mat-button color="warn" (click)="addPizza.reset()">Cancel</button>
+        </mat-card-actions>
+      </mat-card>
+
+    </mat-tab>
+    <!-- Manage pizza -->
+    <mat-tab label="Manage pizza">
+      <div class="row" *ngFor="let item of allPizaas; let i = index">
+        <div class="img"><img src="{{ item.img }}" alt="imge" /></div>
+        <div class="name">{{ item.name }}</div>
+        <div class="name">{{ item.comp }}</div>
+        <div class="price">{{ item.price }} $</div>
+        <div class="remove">
+          <button mat-icon-button (click)="remove(i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  <button mat-button class="logout" (click) ='logout()'>
+    Logout
+   </button>
+
+
+</div>

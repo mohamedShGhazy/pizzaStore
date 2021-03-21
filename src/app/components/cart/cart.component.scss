@@ -1,0 +1,60 @@
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+.head {
+  text-align: center;
+  color: #ff8080;
+  font-style: italic;
+  font-size: 40px;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  background-color: #ffff;
+  padding: 10px;
+  border: 2px solid #cacaca;
+  border-radius: 15px;
+}
+.img {
+  img {
+    width: 100px;
+    border-radius: 10%;
+  }
+}
+.name,
+.price,
+.remove {
+  font-size: 20px;
+  margin: auto 0;
+  color: #ff8080;
+}
+.btn{
+  margin-top: 20px;
+  color: #ff8080;
+  font-size: 20px;
+}
+.example-form {
+
+  width: 80%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+td {
+  padding-right: 8px;
+}
+.done{
+  text-align: center;
+  img{
+    width: 275px;
+    border-radius: 50%;
+  }
+  p{
+    color: #ff8080;
+    font-size: 20px;
+  }
+}

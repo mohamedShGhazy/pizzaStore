@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #e7e7e7;
+}
+
+.mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+  background-color: #ff8080 !important;
+}
+.alert-success {
+  color: #c3e6cb!important;
+  border-color:#155724 !important ;
+  text-align: center !important;
+}
+
+.alert-danger {
+  color:  #f8d7da !important;
+  border-color: #721c24 !important;
+  text-align: center !important;
+}

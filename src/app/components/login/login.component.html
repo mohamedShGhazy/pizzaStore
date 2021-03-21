@@ -1,0 +1,22 @@
+<button mat-button (click)='close()'>
+ <mat-icon>close</mat-icon>
+</button>
+<div class="container">
+  <mat-label class="lable">Login as admin !</mat-label>
+  <form (ngSubmit)="onSubmit()"  [formGroup]="form" >
+    <mat-form-field appearance="fill" class="wid" color ='accent'>
+      <mat-label>Enter user name</mat-label>
+      <input matInput required formControlName="username" >
+      <!-- <mat-error >{{getErrorMessage()}}</mat-error> -->
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="wid" color ='accent'>
+      <mat-label>Enter your password</mat-label >
+      <input matInput type='password' required formControlName="password">
+    </mat-form-field>
+    <div>
+      <button mat-button class="btn" type="submit"  [disabled]="!form.valid">
+       Login
+      </button>
+    </div>
+  </form>
+</div>
